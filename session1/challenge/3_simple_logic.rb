@@ -8,5 +8,7 @@
 # ten_twenty(6) # => 10
 
 def ten_twenty(n)
+  n.even? 10
+  n.odd? 20
   # your code goes here
 end

@@ -18,8 +18,20 @@
 # remember you can try your program out with              $ ruby 2_input_output_control.rb
 # and when you think it is correct, you can test it with  $ rake 2:2
 
+def prompt 
+    puts "Give me a number or say goodbye" 
+end
+
+
 def hi_hi_goodbye
-  # your code here
+ prompt
+ while (line =gets) && (line !~ /bye/) # input exists but doesn not equal bye
+ line.to_i.times {print "hi"}
+ puts 
+ prompt
+ end
+ puts "goodbye"
+ 
 end
 
 

@@ -14,3 +14,10 @@
 # prime_chars? ['ab', 'cd']       # => false
 # prime_chars? ['a', 'bcd']       # => false
 # prime_chars? ['a', 'b', 'cd']   # => false
+
+    def prime_chars? (strings)
+    strings.concat.length.prime? # searching for a prime method but not sure what it is 
+    
+end
+
+

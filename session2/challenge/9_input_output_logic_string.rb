@@ -23,9 +23,28 @@
 # GRANDMA:  HUH?! SPEAK UP, SONNY!
 # USER:     BYE
 
-def deaf_grandma
 
+    
+#need to use gets command for user input then run an if statement printing set
+#responses based on the case of the input
+#class string 
+ #   def is_upper
+  #      self == self.upcase
+   # end 
+def deaf_grandma   
+while line = gets #begins a loop
+line.chomp!
+break if line =="BYE" #structured thought makes this the most logical first ste[]
+if line == line.upcase and line !="" #so long as it is uppercase and does contain some value 
+    puts "NO, NOT SINCE 1938!" #print for the user
+else
+    puts "HUH?!  SPEAK UP, SONNY!" #otherwise print for the user
 end
+end
+end 
+
+
+
 
 
 

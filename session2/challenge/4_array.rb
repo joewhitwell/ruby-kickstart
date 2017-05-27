@@ -7,3 +7,9 @@
 # get_squares [25, 4, 9, 6, 50, 16, 5] # => [4, 5]
 
 # This time you will have to define the method, it's called: get_squares
+
+def get_squares
+    numbers.select [ |n| numbers.include? n*n }.sort
+    # selects numbers where that number exists as the square of another
+    # the .include is a boolean operator, 
+    #.sort is the method that lists them in order for ease.

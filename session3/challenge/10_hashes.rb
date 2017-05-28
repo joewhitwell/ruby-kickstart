@@ -29,5 +29,17 @@
 # create it from scratch :)
 
 
-def pathify
+def pathify (paths=Hash.new)
+    
+    return paths.map { |path '/' + path } if paths.is_a? Array #if an array of files, no need to go deeper
+    
+    to_return =[]
+    path.each do |parent_path, child_dirs|
+        parent_path = '/' + parent_path #add a slah
+        child_path = pathify child_dirs # to create a recursive call 
+        child_paths.each do |child_path|
+            to_return << (parent_path + child_path) # append on to create the full path 
+        end
+    end
+    to_return
 end

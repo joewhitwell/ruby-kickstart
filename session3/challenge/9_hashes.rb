@@ -29,4 +29,22 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+    union = {}
+    a.each do |element| # split the array, and apply the block
+        
+        union [element] || = [nil, nil] #if nothing in either, 
+        union [element][0] = true #
+    end
+    
+    b.each do |element| # if nothing present, initialize
+        union [element] ||= [nil,nil]  #the element exists in b
+        union [element][1] =true #
+    end
+    
+    result =union.select { |key, value| value == [true, true] }.map {key, value| key} #filter the map, to create new map with only elements in a and b
+    
+    return union, result.sorted
+end
+    
+    
 end

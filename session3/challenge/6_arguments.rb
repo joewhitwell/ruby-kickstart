@@ -17,3 +17,19 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(opposites_attract, *elements) #method takes a boolean, and any number of booleans
+    to_return = [] #creating an empty array
+    elements.each_slice 2 do |first, last| #splits the array into an array of pairs
+        first = !!first #conversion to boolean
+        last = !! last
+        result = if opposites_attract
+                first != last  #first does not equal last
+    else
+        first ==last  #or they equal
+    end
+    to_return << result #append result 
+end 
+to_return
+end
+    
+    

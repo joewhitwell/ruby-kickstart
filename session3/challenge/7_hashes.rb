@@ -26,33 +26,41 @@
 
 class HTMLTag
   FONTS = {
-    :serif      => '"Times New Roman", "Georgia"',
+    :serif      => '"Times New Roman", "Georgia"', # values arew assigned using the hash rockets
     :sans_serif => '"Arial", "Verdana"',
     :monospace  => '"Courier New", "Lucida Console"'
   }
+  
+  COLORS = { 
+    :red =>  '#FF0000',
+    :green => '#00FF00', #values arew assigned using the hash rockets
+    :blue => '#0000FF',
+  }
 
-  attr_accessor :name, :innerHTML, :options
-
+  attr_accessor :name, :innerHTML, :font, :color, :multiline #properties of the class 
+  
   # options: :multiline should be true or false
-  def initialize(name, innerHTML, options)
-    @name, @innerHTML, @options = name, innerHTML, options
+  def initialize(name, innerHTML, options=Hash.new)
+    @name, @innerHTML, @options = name, innerHTML, options #instance variables
+    self.font = FONTS[options[:font]] #self sets the font in this instance
+    self.color = COLORS[options[:color]]
+    self.multiline = options.fetch :multiline, false 
   end
 
-  def font
-    font = options[:font]  #  one of :serif, :sans_serif, or :monospace
-    FONTS[font]
+  def style 
+    return nil unless font || color
+    to_return = "style='"
+    to_return << "font-family:#{font};" if font # appends the font family if a font in order to build hte style attributes
+    to_return << "color: #{color};" if color 
+    to_return << "'"
+    to_return
   end
-
-  def style
-    return nil unless options[:font]
-    "style='font-family:#{font}'"
-  end
-
+  
   def to_s
-    line_end = if options[:multiline] then "\n" else "" end
-    "<#{name} #{style}>#{line_end}"  \
-    "#{innerHTML.chomp}#{line_end}"  \
-    "</#{name}>\n"
+    line_end = ""
+    line_end = "\n" if multiline 
+    "<#{name} #{style}>#{line_end}"   \ #multiline string 
+      "#{innerHTML.chomp}#{line_end}" \ #substitues variable value in.
+    "</#{name}>\n" #insert a new line
   end
-
-end
+  end

@@ -30,5 +30,8 @@
 # end
 
 
-def array_init
+def array_init (size=5, &block) #takes a size, by default 5 and a block
+    block ||= Proc.new {|i| (100 * i).to_s } #if block isnt defined, set it to 100 times the integer turned into a string
+    Array.new(size, & block) #use the block to initalise new elements of the array
+
 end

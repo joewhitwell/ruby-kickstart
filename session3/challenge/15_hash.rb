@@ -38,3 +38,12 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+def list_size(list)
+    return 0 unless list #basecase 
+    1 + list_size(list [:next]) # continually add one until reach end of list
+end
+def middle(list, distance =list_size(list)/2) # middle element, take size and divide by two 
+    return list[:data] if distance == 0 # if 0 steps to go then proceed no further 
+    middle list [:next], (distance -1 ) #go one down the list then n-1 steps 
+ende 
